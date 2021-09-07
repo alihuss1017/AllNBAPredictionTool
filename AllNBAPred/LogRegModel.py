@@ -13,17 +13,32 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+pd.set_option('display.max_rows', None)
 trueNegative = 0
 truePositive = 0
 falseNegative = 0
 falsePositive = 0
-
+playerList =[]
+statList=[[],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []]
+predList=[]
+actList=[]
 dataSet = pd.read_csv("DataSet.csv")
 dataSet = dataSet[['Player','PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP', 'All-NBA?']]
-
 a=dataSet.pop('Player')
 A=np.array(a)
 
+dictNba = {'Prediction': [],'PTS':[],'TRB':[],'AST':[],'GPnSround%':[], 'PER':[],'WS':[],'BPM':[],'VORP':[], 'Actual':[]}
 predict = 'All-NBA?'
 X = np.array(dataSet.drop([predict], 1))
 trueX = X
@@ -48,6 +63,8 @@ for _ in range(100):
 pickle_in = open("studentmodel.pickle", "rb")
 logistic = pickle.load(pickle_in)
 logPredY= logistic.predict(testX)
+
+stats = 'PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP'
 for x in range(len(logPredY)):
 
     if logPredY[x]==0 and logPredY[x]==testY[x]:
@@ -63,21 +80,32 @@ for x in range(len(logPredY)):
         falsePositive = falsePositive + 1
 
     if logPredY[x] == 1 or testY[x] == 1:
-        print(testA[x], logPredY[x], testTrueX[x], testY[x])
+        playerList.append(testA[x])
+        predList.append(logPredY[x])
+        actList.append(testY[x])
+        for y in range(len(stats)):
+            statList[y].append(testTrueX[x][y])
+            dictNba[stats[y]] = statList[y]
+
+
+dictNba['Prediction'] = predList
+dictNba['Actual']= actList
 
 Precision = float(precision_score(testY, logPredY))
 Recall = float(recall_score(testY, logPredY))
 f1Score = float((2*Precision*Recall)/(Precision+Recall))
 
-print(trueNegative)
-print(truePositive)
-print(falseNegative)
-print(falsePositive)
+print(f'True Negatives: {trueNegative}')
+print(f'True Positives: {truePositive}')
+print(f'False Negatives: {falseNegative}')
+print(f'False Positives: {falsePositive}')
 
-print(Precision)
-print(Recall)
-print(f1Score)
-
+print(f'Precision: {Precision}')
+print(f'Recall: {Recall}')
+print(f'f1Score: {f1Score}')
+dictNbaFormat = pd.DataFrame(dictNba)
+dictNbaFormat.index=playerList
+print(f'{dictNbaFormat}')
 x1='PTS'
 y1='GPnSround%'
 ax = pyplot.axes(projection='3d')
