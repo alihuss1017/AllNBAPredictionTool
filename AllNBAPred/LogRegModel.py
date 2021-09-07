@@ -18,10 +18,12 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_rows', None)
+
 trueNegative = 0
 truePositive = 0
 falseNegative = 0
 falsePositive = 0
+
 playerList =[]
 statList=[[],
       [],
@@ -33,8 +35,10 @@ statList=[[],
       []]
 predList=[]
 actList=[]
+
 dataSet = pd.read_csv("DataSet.csv")
 dataSet = dataSet[['Player','PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP', 'All-NBA?']]
+
 a=dataSet.pop('Player')
 A=np.array(a)
 
@@ -43,6 +47,7 @@ predict = 'All-NBA?'
 X = np.array(dataSet.drop([predict], 1))
 trueX = X
 Y = np.array(dataSet[predict])
+
 LogisticRegression(solver='lbfgs', max_iter=1000)
 min_max_scaler = preprocessing.MinMaxScaler()
 X = min_max_scaler.fit_transform(X)
@@ -65,6 +70,7 @@ logistic = pickle.load(pickle_in)
 logPredY= logistic.predict(testX)
 
 stats = 'PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP'
+
 for x in range(len(logPredY)):
 
     if logPredY[x]==0 and logPredY[x]==testY[x]:
@@ -83,6 +89,7 @@ for x in range(len(logPredY)):
         playerList.append(testA[x])
         predList.append(logPredY[x])
         actList.append(testY[x])
+            
         for y in range(len(stats)):
             statList[y].append(testTrueX[x][y])
             dictNba[stats[y]] = statList[y]
@@ -103,22 +110,26 @@ print(f'False Positives: {falsePositive}')
 print(f'Precision: {Precision}')
 print(f'Recall: {Recall}')
 print(f'f1Score: {f1Score}')
+
 dictNbaFormat = pd.DataFrame(dictNba)
 dictNbaFormat.index=playerList
 print(f'{dictNbaFormat}')
-x1='PTS'
-y1='GPnSround%'
-ax = pyplot.axes(projection='3d')
-x=dataSet['PTS']*2+dataSet['TRB']+dataSet['AST']+dataSet['PER']+dataSet['WS']*2+dataSet['VORP']*2+dataSet['BPM']*2
-y=dataSet[y1]
-z=dataSet[predict]
 
-ax.set_xlabel('Stats Combined')
-ax.set_ylabel('% of Games Played and Started')
-ax.set_zlabel(predict)
-ax.scatter(x,y,z)
-ax.set_title('Correlation of Stats and Games Played with All-NBA Teams')
-pyplot.show()
+plotStats = ['PTS','PER','WS','BPM','VORP']
+for stat in plotStats:
+    x1= stat
+    y1='GPnSround%'
+    ax = pyplot.axes(projection='3d')
+    x=dataSet[stat]
+    y=dataSet[y1]
+    z=dataSet[predict]
+    
+    ax.set_xlabel(f'{stat}')
+    ax.set_ylabel('% of Games Played and Started')
+    ax.set_zlabel(predict)
+    ax.scatter(x,y,z)
+    ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
+    pyplot.show()
 
 tnfLabels = ['TP', 'FN', 'FP']
 tnfResult = [truePositive, falseNegative, falsePositive]
@@ -131,4 +142,6 @@ pnrResult = [Precision, Recall]
 pyplot.bar(pnrLabel, pnrResult, width = 0.1)
 pyplot.title('Precision and Recall of Logistic Regression Algorithm')
 pyplot.show()
+
+
 
