@@ -38,7 +38,6 @@ actList=[]
 
 dataSet = pd.read_csv("DataSet.csv")
 dataSet = dataSet[['Player','PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP', 'All-NBA?']]
-
 a=dataSet.pop('Player')
 A=np.array(a)
 
@@ -53,7 +52,7 @@ min_max_scaler = preprocessing.MinMaxScaler()
 X = min_max_scaler.fit_transform(X)
 
 best=0
-for _ in range(100):
+for _ in range(50):
 
     trainTrueX, testTrueX, trainA, testA, trainX, testX, trainY, testY = sklearn.model_selection.train_test_split(trueX,A, X, Y, test_size=0.3)
     logistic = linear_model.LogisticRegression()
@@ -70,7 +69,6 @@ logistic = pickle.load(pickle_in)
 logPredY= logistic.predict(testX)
 
 stats = 'PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP'
-
 for x in range(len(logPredY)):
 
     if logPredY[x]==0 and logPredY[x]==testY[x]:
@@ -89,7 +87,7 @@ for x in range(len(logPredY)):
         playerList.append(testA[x])
         predList.append(logPredY[x])
         actList.append(testY[x])
-            
+
         for y in range(len(stats)):
             statList[y].append(testTrueX[x][y])
             dictNba[stats[y]] = statList[y]
@@ -111,23 +109,27 @@ print(f'Precision: {Precision}')
 print(f'Recall: {Recall}')
 print(f'f1Score: {f1Score}')
 
-dictNbaFormat = pd.DataFrame(dictNba)
-dictNbaFormat.index=playerList
-print(f'{dictNbaFormat}')
+dictNbaFrame = pd.DataFrame(dictNba)
+dictNbaFrame.index=playerList
+print(f'{dictNbaFrame}')
 
 plotStats = ['PTS','PER','WS','BPM','VORP']
 for stat in plotStats:
     x1= stat
     y1='GPnSround%'
+
     ax = pyplot.axes(projection='3d')
-    x=dataSet[stat]
-    y=dataSet[y1]
-    z=dataSet[predict]
-    
+    x=dictNbaFrame[stat]
+    y=dictNbaFrame[y1]
+    z=dictNbaFrame['Prediction']
+    z2=dictNbaFrame['Actual']
+
     ax.set_xlabel(f'{stat}')
     ax.set_ylabel('% of Games Played and Started')
     ax.set_zlabel(predict)
-    ax.scatter(x,y,z)
+
+    ax.scatter(x,y,z, label='Prediction')
+    ax.scatter(x,y,z2, label='Actual')
     ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
     pyplot.show()
 
