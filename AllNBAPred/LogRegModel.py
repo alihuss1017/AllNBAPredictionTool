@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import tensorflow as tf
@@ -134,16 +135,19 @@ for stat in plotStats:
     pyplot.show()
 
 tnfLabels = ['TP', 'FN', 'FP']
-tnfResult = [truePositive, falseNegative, falsePositive]
-pyplot.bar(tnfLabels, tnfResult)
+tnfResult = np.array([truePositive, falseNegative, falsePositive])
+
+pyplot.bar(tnfLabels, tnfResult, width=0.3)
+plt.yticks(np.arange(0, tnfResult.max(), 1))
 pyplot.title('Results of Logistic Regression Algorithm')
 pyplot.show()
 
 pnrLabel = ['Precision', 'Recall']
-pnrResult = [Precision, Recall]
-pyplot.bar(pnrLabel, pnrResult, width = 0.1)
+pnrResult = np.array([Precision, Recall])
+
+pyplot.bar(pnrLabel, pnrResult, width = 0.5)
+plt.yticks(np.arange(0,1,.05))
 pyplot.title('Precision and Recall of Logistic Regression Algorithm')
 pyplot.show()
-
 
 
