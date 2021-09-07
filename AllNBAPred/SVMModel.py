@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 import sklearn
 from sklearn import *
@@ -80,7 +80,7 @@ for x in range(len(y_pred)):
         playerList.append(testA[x])
         predList.append(y_pred[x])
         actList.append(testY[x])
-        
+
         for y in range(len(stats)):
             statList[y].append(testX[x][y])
             dictNba[stats[y]]=statList[y]
@@ -112,33 +112,39 @@ plotStats = ['PTS','PER','WS','BPM','VORP']
 for stat in plotStats:
     x1= stat
     y1='GPnSround%'
-    
-    ax = pyplot.axes(projection='3d')
+
+    ax = plt.axes(projection='3d')
     x=dictNbaFrame[stat]
     y=dictNbaFrame[y1]
     z=dictNbaFrame['Prediction']
     z2=dictNbaFrame['Actual']
-    
+
     ax.set_xlabel(f'{stat}')
     ax.set_ylabel('% of Games Played and Started')
     ax.set_zlabel(predict)
-    
+
     ax.scatter(x,y,z, label = 'Prediction')
     ax.scatter(x,y,z2, label = 'Actual')
     ax.legend()
     ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
-    pyplot.show()
+    plt.show()
 
 
 tnfLabels = ['TP', 'FN', 'FP']
-tnfResult = [truePositive, falseNegative, falsePositive]
-pyplot.bar(tnfLabels, tnfResult)
-pyplot.title('Results of SVM Algorithm')
-pyplot.show()
+tnfResult = np.array([truePositive, falseNegative, falsePositive])
+
+plt.bar(tnfLabels, tnfResult, width=0.3)
+plt.yticks(np.arange(0,tnfResult.max()+1,1))
+plt.title('Results of SVM Algorithm')
+plt.show()
 
 pnrLabel = ['Precision', 'Recall']
-pnrResult = [Precision, Recall]
-pyplot.bar(pnrLabel, pnrResult, width = 0.1)
-pyplot.title('Precision and Recall of SVM Algorithm')
-pyplot.show()
+pnrResult = np.array([Precision, Recall])
+
+plt.bar(pnrLabel, pnrResult, width = 0.5)
+plt.yticks(np.arange(0,1.05,.05))
+plt.title('Precision and Recall of SVM Algorithm')
+plt.show()
+
+
 
