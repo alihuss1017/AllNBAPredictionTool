@@ -13,10 +13,12 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_rows', None)
+
 trueNegative = 0
 truePositive = 0
 falseNegative = 0
 falsePositive = 0
+
 playerList=[]
 statList=[[],
       [],
@@ -28,6 +30,7 @@ statList=[[],
       []]
 predList=[]
 actList=[]
+
 dictNba = {'Prediction': [],'PTS':[],'TRB':[],'AST':[],'GPnSround%':[], 'PER':[],'WS':[],'BPM':[],'VORP':[], 'Actual':[]}
 dataSet = pd.read_csv("DataSet.csv")
 dataSet = dataSet[['Player','PTS', 'TRB', 'AST', 'GPnSround%', 'PER', 'WS', 'BPM', 'VORP', 'All-NBA?']]
@@ -77,6 +80,7 @@ for x in range(len(y_pred)):
         playerList.append(testA[x])
         predList.append(y_pred[x])
         actList.append(testY[x])
+            
         for y in range(len(stats)):
             statList[y].append(testX[x][y])
             dictNba[stats[y]]=statList[y]
@@ -96,17 +100,13 @@ print(f'False Positives: {falsePositive}')
 print(f'Precison: {Precision}')
 print(f'Recall: {Recall}')
 print(f'f1Score: {f1Score}')
+
 dictNbaFrame = pd.DataFrame(dictNba)
 dictNbaFrame.index=playerList
 print(dictNbaFrame)
-x1='PTS'
-y1='GPnSround%'
-
-x=dataSet['PTS']*2+dataSet['TRB']+dataSet['AST']+dataSet['PER']+dataSet['WS']*2+dataSet['VORP']*2+dataSet['BPM']*2
-y=dataSet[y1]
-z=dataSet[predict]
 
 plotStats = ['PTS','PER','WS','BPM','VORP']
+
 for stat in plotStats:
     x1= stat
     y1='GPnSround%'
@@ -114,6 +114,7 @@ for stat in plotStats:
     x=dictNbaFrame[stat]
     y=dictNbaFrame[y1]
     z=dictNbaFrame['Prediction']
+     
     ax.set_xlabel(f'{stat}')
     ax.set_ylabel('% of Games Played and Started')
     ax.set_zlabel(predict)
