@@ -106,13 +106,21 @@ x=dataSet['PTS']*2+dataSet['TRB']+dataSet['AST']+dataSet['PER']+dataSet['WS']*2+
 y=dataSet[y1]
 z=dataSet[predict]
 
-ax = pyplot.axes(projection='3d')
-ax.set_xlabel('Stats Combined')
-ax.set_ylabel('% of Games Played and Started')
-ax.set_zlabel(predict)
-ax.scatter(x,y,z, color='red')
-ax.set_title('Correlation of Stats and Games Played with All-NBA')
-pyplot.show()
+plotStats = ['PTS','PER','WS','BPM','VORP']
+for stat in plotStats:
+    x1= stat
+    y1='GPnSround%'
+    ax = pyplot.axes(projection='3d')
+    x=dictNbaFrame[stat]
+    y=dictNbaFrame[y1]
+    z=dictNbaFrame['Prediction']
+    ax.set_xlabel(f'{stat}')
+    ax.set_ylabel('% of Games Played and Started')
+    ax.set_zlabel(predict)
+    ax.scatter(x,y,z)
+    ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
+    pyplot.show()
+
 
 tnfLabels = ['TP', 'FN', 'FP']
 tnfResult = [truePositive, falseNegative, falsePositive]
@@ -125,4 +133,6 @@ pnrResult = [Precision, Recall]
 pyplot.bar(pnrLabel, pnrResult, width = 0.1)
 pyplot.title('Precision and Recall of SVM Algorithm')
 pyplot.show()
+
+
 
