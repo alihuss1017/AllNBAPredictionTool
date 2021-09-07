@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as pyplot
 from mpl_toolkits import mplot3d
 import sklearn
 from sklearn import *
@@ -119,7 +118,7 @@ for stat in plotStats:
     x1= stat
     y1='GPnSround%'
 
-    ax = pyplot.axes(projection='3d')
+    ax = plt.axes(projection='3d')
     x=dictNbaFrame[stat]
     y=dictNbaFrame[y1]
     z=dictNbaFrame['Prediction']
@@ -132,22 +131,23 @@ for stat in plotStats:
     ax.scatter(x,y,z, label='Prediction')
     ax.scatter(x,y,z2, label='Actual')
     ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
-    pyplot.show()
+    plt.show()
 
 tnfLabels = ['TP', 'FN', 'FP']
 tnfResult = np.array([truePositive, falseNegative, falsePositive])
 
-pyplot.bar(tnfLabels, tnfResult, width=0.3)
-plt.yticks(np.arange(0, tnfResult.max(), 1))
-pyplot.title('Results of Logistic Regression Algorithm')
-pyplot.show()
+plt.bar(tnfLabels, tnfResult, width=0.3)
+plt.yticks(np.arange(0, tnfResult.max()+1, 1))
+plt.title('Results of Logistic Regression Algorithm')
+plt.show()
 
 pnrLabel = ['Precision', 'Recall']
 pnrResult = np.array([Precision, Recall])
 
-pyplot.bar(pnrLabel, pnrResult, width = 0.5)
-plt.yticks(np.arange(0,1,.05))
-pyplot.title('Precision and Recall of Logistic Regression Algorithm')
-pyplot.show()
+plt.bar(pnrLabel, pnrResult, width = 0.5)
+plt.yticks(np.arange(0,1.05,.05))
+plt.title('Precision and Recall of Logistic Regression Algorithm')
+plt.show()
+
 
 
