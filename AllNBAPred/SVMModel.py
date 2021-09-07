@@ -44,7 +44,7 @@ Y = np.array(dataSet[predict])
 
 
 best=0
-for _ in range(100):
+for _ in range(50):
 
     trainA, testA, trainX, testX, trainY, testY = sklearn.model_selection.train_test_split(A, X, Y, test_size=0.3)
     clf = svm.SVC(kernel="linear")
@@ -80,7 +80,7 @@ for x in range(len(y_pred)):
         playerList.append(testA[x])
         predList.append(y_pred[x])
         actList.append(testY[x])
-            
+        
         for y in range(len(stats)):
             statList[y].append(testX[x][y])
             dictNba[stats[y]]=statList[y]
@@ -105,20 +105,27 @@ dictNbaFrame = pd.DataFrame(dictNba)
 dictNbaFrame.index=playerList
 print(dictNbaFrame)
 
-plotStats = ['PTS','PER','WS','BPM','VORP']
+x1='PTS'
+y1='GPnSround%'
 
+plotStats = ['PTS','PER','WS','BPM','VORP']
 for stat in plotStats:
     x1= stat
     y1='GPnSround%'
+    
     ax = pyplot.axes(projection='3d')
     x=dictNbaFrame[stat]
     y=dictNbaFrame[y1]
     z=dictNbaFrame['Prediction']
-     
+    z2=dictNbaFrame['Actual']
+    
     ax.set_xlabel(f'{stat}')
     ax.set_ylabel('% of Games Played and Started')
     ax.set_zlabel(predict)
-    ax.scatter(x,y,z)
+    
+    ax.scatter(x,y,z, label = 'Prediction')
+    ax.scatter(x,y,z2, label = 'Actual')
+    ax.legend()
     ax.set_title(f'Correlation of {stat} and Games Played with All-NBA Teams')
     pyplot.show()
 
@@ -134,6 +141,4 @@ pnrResult = [Precision, Recall]
 pyplot.bar(pnrLabel, pnrResult, width = 0.1)
 pyplot.title('Precision and Recall of SVM Algorithm')
 pyplot.show()
-
-
 
