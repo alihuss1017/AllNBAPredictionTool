@@ -22,9 +22,9 @@ VORP (Value Over Replacement Player)
 
 ## PREDICTION METRICS USED
 
-TN(True Negative): How many NBA players were correctly predicted to not make an all-NBA team?
+TN(True Negative): How many NBA players were correctly predicted to not make an all-NBA team(y=0)?
 
-TP(True Positive): How many NBA players were correctly predicted to make an all-NBA team?
+TP(True Positive): How many NBA players were correctly predicted to make an all-NBA team(y=1)?
 
 FN(False Negative): How many NBA players were incorrectly predicted to not make an all-NBA team?
 
@@ -32,7 +32,7 @@ FP(False Positive): How many NBA players were incorrectly predicted to not make 
 
 ## EVALUATION METRICS USED
 
-Precision: TP/(TP+FP). Of all NBA players predicted to make an all-NBA team(y=1), what fraction actually made an all-NBA team?
+Precision: TP/(TP+FP). Of all NBA players predicted to make an all-NBA team, what fraction actually made an all-NBA team?
 
 Recall: TP/(TP+FN). Of all NBA players predicted to make an all-NBA team, what fraction was correctly predicted to make an all-NBA team?
 
@@ -43,14 +43,16 @@ Accuracy Score:(TP+TN)/(TP+TN+FP+FN). Of all NBA players in the testing data, ho
 ###  SVM ALGORITHM PERFORMANCE
 ![svm](https://user-images.githubusercontent.com/83521645/132613508-42635e19-cc21-4ae3-a3ba-193c716a627c.jpg)
 
+Shown above is the result of the testing data(performed on SVM algorithm) that includes a player who was either predicted to make an all-NBA team or actually made an all-NBA team. NOTE: Player names may appear more than once, this means that the testing data contained multiple seasons from a single player.
+
 #### EVALUATION RESULTS
 True Negatives: 308
 
 True Positives: 22
 
-False Negatives: 2
+False Negatives: 2 (DeMarcus Cousins, Joel Embiid)
 
-False Positives: 3
+False Positives: 3 (Bradley Beal, Zion Williamson, Anthony Davis)
 
 Precison: 0.88
 
@@ -82,6 +84,8 @@ Accuracy Score: 0.99
 
 ### LOGISTIC REGRESSION ALGORITHM PERFORMANCE
 ![logregData](https://user-images.githubusercontent.com/83521645/132617448-2d25c1c8-5545-4bc5-af25-bf30fa4012ca.jpg)
+
+Shown above is the result of the testing data(performed on logistic regression algorithm) that includes a player who was either predicted to make an all-NBA team or actually made an all-NBA team. NOTE: Player names may appear more than once, this means that the testing data contained multiple seasons from a single player.
 
 #### EVALUATION RESULTS
 True Negatives: 314
