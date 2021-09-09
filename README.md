@@ -64,6 +64,9 @@ Accuracy Score: 0.99
 
 ###### POINTS AND ALL-NBA CORRELATION
 ![ptsSVM](https://user-images.githubusercontent.com/83521645/132613641-b40eab49-c255-4cb8-91f5-650b75d427e2.png)
+
+As shown above, 
+
 ###### PLAYER EFFICIENCY RATING AND ALL-NBA CORRELATION
 ![perSVM](https://user-images.githubusercontent.com/83521645/132613715-6363d2c6-112a-4fa0-817c-08c52984a0ae.png)
 ###### WIN SHARES AND ALL-NBA CORRELATION
