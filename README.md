@@ -1,14 +1,21 @@
 Developed using Python and multiple data science libraries (SciKit-Learn, NumPy, Pandas, TensorFlow, MatPlotLib), this program predicts whether or not an NBA player would make an all-NBA team based on multiple per-game stats, such as points, rebounds, and assists, as well as advanced stats including PER (Player Efficiency Rating) and VORP (Value Over Replacement Player). The training and testing data is derived from the 2015-2021 NBA seasons. The algorithm used to train the data is an SVM algorithm with a linear kernel.
 
---------------------------------------------
+
 SVM ALGORITHM:
 True Negatives: 308
+
 True Positives: 22
+
 False Negatives: 2
+
 False Positives: 3
+
 Precison: 0.88
+
 Recall: 0.9166666666666666
+
 f1Score: 0.8979591836734694
+
                        Prediction   PTS   TRB   AST  GPnSround%   PER    WS   BPM  VORP  Actual
 Stephen Curry                   1  26.4   5.1   6.1      0.6220  28.2   9.1   7.7   4.0       1
 Kemba Walker                    1  25.6   4.4   5.9      1.0000  21.7   7.4   4.2   4.4       1
