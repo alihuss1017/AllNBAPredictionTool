@@ -82,7 +82,7 @@ Looking at the 3D graph from a top view, it is shown that the blue and orange po
 ###### PLAYER EFFICIENCY RATING AND ALL-NBA CORRELATION
 ![perSVM](https://user-images.githubusercontent.com/83521645/132613715-6363d2c6-112a-4fa0-817c-08c52984a0ae.png)
 
-This graph's independent variables are PER and %GPnS. There is a positive correlation between %GPnS and making an all-NBA team, and PER does not seem to influence the outcome. There is a relatively strong, positve correlation between PTS and %GPnS with making an all-NBA team.
+This graph's independent variables are PER and %GPnS. There is a positive correlation between %GPnS and making an all-NBA team, and PER does not seem to influence the outcome. There is a relatively strong, positve correlation between PER and %GPnS with making an all-NBA team.
 
 ###### WIN SHARES AND ALL-NBA CORRELATION
 
@@ -102,12 +102,12 @@ This graph's independent variables are VORP and %GPnS. There is a positive corre
 ###### DATA ACCURACY RESULTS
 ![resultSVM](https://user-images.githubusercontent.com/83521645/132613773-837dbf35-cfeb-4d00-9ed5-055480b8dc89.png)
 
-This graph's independent variables are PER and %GPnS. From this data there doesn't seem to be any correlation between PER and making an all-NBA team. 
+This bar graph looks at the accuracy of the algorithm, comparing true positives, false negatives, and false positives. As shown, the algorithm correctly predicted most of the players that actually made an all-NBA team.
 
 #### PRECISION AND RECALL RESULTS
 ![pnrSVM](https://user-images.githubusercontent.com/83521645/132613782-3ba00019-4062-45cc-a5ec-885a1f1e7a14.png)
 
-This graph's independent variables are PER and %GPnS. From this data there doesn't seem to be any correlation between PER and making an all-NBA team. 
+This bar graph compares the magnitudes of precision and recall. In this case the recall was slightly higher, meaning the algorithm was more lenient in predicting players to make an all-NBA team.
 
 
 
@@ -138,16 +138,33 @@ Accuracy Score: 0.98
 
 ###### POINTS AND ALL-NBA CORRELATION
 ![ptsLR](https://user-images.githubusercontent.com/83521645/132617480-53a3c66c-5cfd-47cd-af45-c80d6aebffad.png)
+
+There are two independent variables, the percentage of games played and started(%GPnS), and points(PTS). There is a strong positive correlation between points and players making on all-NBA team.
+
 ###### PLAYER EFFICIENCY RATING AND ALL-NBA CORRELATION
 ![perLR](https://user-images.githubusercontent.com/83521645/132617488-ff60ac4d-479f-4712-b9ab-693644c5305a.png)
+
+There are two independent variables, PER and %GPnS. There is a  positive correlation between PER and %GPnS with players making on all-NBA team.
+
 ###### WIN SHARES AND ALL-NBA CORRELATION
 ![wsLR](https://user-images.githubusercontent.com/83521645/132617498-efa68682-5970-4e79-9466-c9beb8ed6b00.png)
+
+There are two independent variables, WS and %GPnS. There is a strong positive correlation between WS and GPnS with players making on all-NBA team.
+
 ###### BOX PLUS/MINUS AND ALL-NBA CORRELATION
 ![bpmLR](https://user-images.githubusercontent.com/83521645/132617503-9c91e675-957f-4c58-9f0c-7ec1e369ba5c.png)
+
+There are two independent variables, BPM and %GPnS. There is a positive correlation between BPM and %GPnS with players making on all-NBA team.
+
 ###### VALUE OVER REPLACEMENT PLAYER AND ALL-NBA CORRELATION
 ![vorpLR](https://user-images.githubusercontent.com/83521645/132617510-c1000cbb-84db-4529-b036-9f76850eaaa4.png)
+
+There are two independent variables, VORP and %GPnS. There is a strong positive correlation between VORP and %GPnS with players making on all-NBA team.
+
 ###### DATA ACCURACY RESULTS
 ![resultLR](https://user-images.githubusercontent.com/83521645/132617532-33602f3d-f03c-4862-82ce-4455ee0b6e16.png)
+
+
 ###### PRECISION AND RECALL RESULTS
 ![pnrLR](https://user-images.githubusercontent.com/83521645/132617538-02444d02-77dd-4892-82f3-5d4870b6930d.png)
 
