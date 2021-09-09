@@ -16,7 +16,7 @@ Recall: 0.9166666666666666
 
 f1Score: 0.8979591836734694
 
-                       Prediction   PTS   TRB   AST  GPnSround%   PER    WS   BPM  VORP  Actual
+Player                 Prediction   PTS   TRB   AST  GPnSround%   PER    WS   BPM  VORP  Actual
 Stephen Curry                   1  26.4   5.1   6.1      0.6220  28.2   9.1   7.7   4.0       1
 Kemba Walker                    1  25.6   4.4   5.9      1.0000  21.7   7.4   4.2   4.4       1
 Stephen Curry                   1  25.3   4.5   6.6      0.9634  24.6  12.6   6.9   5.9       1
