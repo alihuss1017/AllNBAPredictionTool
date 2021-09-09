@@ -92,7 +92,7 @@ True Negatives: 314
 
 True Positives: 13
 
-False Negatives: 8
+False Negatives: 8 (Paul George, Chris Paul, Rudy Gobert, Draymond Green, Kawhi Leonard, DeMarcus Cousins, Jimmy Butler, Joel Embiid)
 
 False Positives: 0
 
