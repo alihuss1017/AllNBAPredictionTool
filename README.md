@@ -76,7 +76,7 @@ This is a 3D scatter plot where the data points are all of the players who were 
 ###### BRIEF GRAPHICAL EXPLANATION
 
 ![Screenshot (8)](https://user-images.githubusercontent.com/83521645/132623362-ff67af67-0fdb-4313-a24f-1d672b0a158f.png)
-Looking at the 3D graph from a top view, it is shown that the blue and orange points do indeed overlap each other when the prediction is correct. However, if there is an orange data point within close proximity of a blue data point, this would indicate that there was a false prediction for that player. As seen in the PTS graph above, although it is difficult to visualize, there are to be multiple points where this is the case.
+Looking at the 3D graph from a top view, it is shown that the blue and orange points do indeed completely overlap each other when the prediction is correct. However, if there is an orange data point that partially overlaps a blue data point, this would indicate that there was a false prediction for that player. As seen in the PTS graph above, although it is difficult to visualize, there are to be multiple points where this is the case.
 
 ###### PLAYER EFFICIENCY RATING AND ALL-NBA CORRELATION
 ![perSVM](https://user-images.githubusercontent.com/83521645/132613715-6363d2c6-112a-4fa0-817c-08c52984a0ae.png)
