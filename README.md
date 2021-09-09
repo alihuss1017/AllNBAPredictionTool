@@ -66,14 +66,20 @@ Accuracy Score: 0.99
 #### GRAPHICAL EXPLANATION
 
 ![Screenshot (8)](https://user-images.githubusercontent.com/83521645/132623362-ff67af67-0fdb-4313-a24f-1d672b0a158f.png)
-Looking at the 3D graph from a top view, it's 
-###### POINTS AND ALL-NBA CORRELATION!
+Looking at the 3D graph from a top view, it is shown that the blue and orange points do indeed overlap each other when the prediction is correct. However, if there is an orange data point within close proximity of a blue data point, this would indicate that there was a false prediction for that player.
+
+###### POINTS AND ALL-NBA CORRELATION
 
 
 
 ![ptsSVM](https://user-images.githubusercontent.com/83521645/132613641-b40eab49-c255-4cb8-91f5-650b75d427e2.png)
 
 This is a 3D scatter plot where the data points are all of the players who were either predicted to make an all-NBA team or actually made an all-NBA team. There are two independent variables, the percentage of games played and started, and points. The dependent variable is whether a player would make an all-NBA team, and therefore, the only value y can be is 0(NO) or 1(YES). The correct predictions are precisely located where the actual predictions are. 
+
+####### BRIEF GRAPHICAL EXPLANATION
+
+![Screenshot (8)](https://user-images.githubusercontent.com/83521645/132623362-ff67af67-0fdb-4313-a24f-1d672b0a158f.png)
+Looking at the 3D graph from a top view, it is shown that the blue and orange points do indeed overlap each other when the prediction is correct. However, if there is an orange data point within close proximity of a blue data point, this would indicate that there was a false prediction for that player. As seen in the PTS graph above, although it is difficult to visualize, there are to be multiple points where this is the case.
 
 ###### PLAYER EFFICIENCY RATING AND ALL-NBA CORRELATION
 ![perSVM](https://user-images.githubusercontent.com/83521645/132613715-6363d2c6-112a-4fa0-817c-08c52984a0ae.png)
