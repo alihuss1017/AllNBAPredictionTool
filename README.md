@@ -19,7 +19,7 @@ BPM (Box Plus/Minus)
 
 VORP (Value Over Replacement Player)
 
-All stats used are from bballreference.com
+All stats used are from basketball-reference.com
 
 ## PREDICTION METRICS USED
 
