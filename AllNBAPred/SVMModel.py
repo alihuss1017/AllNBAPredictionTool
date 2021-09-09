@@ -7,7 +7,15 @@ import sklearn
 from sklearn import *
 from sklearn.metrics import *
 import pickle
+import LogRegModel
+from LogRegModel import *
 
+if __name__ == "__LogRegModel__":
+    main()
+    printResults()
+    statRelationPlot()
+    tnfPlot()
+    pnrPlot()
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
@@ -146,5 +154,10 @@ plt.yticks(np.arange(0,1.05,.05))
 plt.title('Precision and Recall of SVM Algorithm')
 plt.show()
 
-
-
+f1Label = ['SVM', 'LR']
+f1ScoreLR=LogRegModel.f1Score()
+f1Result = np.array([f1Score, f1ScoreLR])
+plt.bar(f1Label, f1Result, width = 0.5)
+plt.yticks(np.arange(0,1.05,.05))
+plt.title('f1Scores of SVM and LogReg')
+plt.show()
