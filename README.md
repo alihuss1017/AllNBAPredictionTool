@@ -174,6 +174,7 @@ This bar graph compares the magnitudes of precision and recall. In this case the
 
 ## ANALYSIS AND CONCLUSION
 
-![f1Score](https://user-images.githubusercontent.com/83521645/132617934-8d36a230-b4dc-458b-8d16-9441e3b2fe17.png)
+![f1Score](https://user-images.githubusercontent.com/83521645/132939604-d5422706-22a9-4e13-adf9-9d16149150df.png)
+
 
 The f1Score and accuracy score of the SVM algorithm was generally greater than that of the logistic regression algorithm, and therefore, the SVM algorithm performed best at predicting whether or not an NBA player would make an all-NBA team. However, both algorithms typically have an f1Score no lower than 0.7, indicating accurate results. There are many adjustments to be made to the program, including better visualization graphics and hyperparameter tuning.
