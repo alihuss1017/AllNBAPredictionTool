@@ -12,10 +12,6 @@ from LogRegModel import *
 
 if __name__ == "__LogRegModel__":
     main()
-    printResults()
-    statRelationPlot()
-    tnfPlot()
-    pnrPlot()
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
