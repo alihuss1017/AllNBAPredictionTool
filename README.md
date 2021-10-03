@@ -35,7 +35,7 @@ FP(False Positive): How many NBA players were incorrectly predicted to not make 
 
 Precision: TP/(TP+FP). Of all NBA players predicted to make an all-NBA team, what fraction actually made an all-NBA team?
 
-Recall: TP/(TP+FN). Of all NBA players predicted to make an all-NBA team, what fraction was correctly predicted to make an all-NBA team?
+Recall: TP/(TP+FN). Of all NBA players who made an all-NBA team, what fraction was correctly predicted to make an all-NBA team?
 
 f1Score: 2(Precision*Recall)/(Precision+Recall). An f1Score is more indicative of the algorithm's performance rather than the accuracy score in this situation since the number of players correctly predicted to not make an all-NBA team(true negatives) is by far the greatest value amongst the other prediction metrics(true positives, false negatives, false positives), and thus every accuracy score would be in the high 90's, not reflective of the algorithm's performance.
 
